@@ -1,11 +1,9 @@
-# Vite Boilerplate
+# Netflix Clone
 
-Estrutura base para iniciar projetos utilizando Vite com React e Typescript.
+Projeto desenvolvido para Bootcamps da DIO.
 
 ### start
 ```sh
-git clone this_repository
-cd this_directory
 npm install
 npm run dev
 ```
