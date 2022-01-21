@@ -1,13 +1,7 @@
 import { Key, useEffect, useState } from 'react'
 import type { MovieRow, Movie } from '@/utils/http'
 import { getHomeList, getMovieInfo } from '@/utils/http'
-import {
-  MovieRowComponent,
-  FeaturedMovie,
-  Header,
-  Footer,
-  Loading
-} from '@/components'
+import { MovieRowComponent, FeaturedMovie, Loading } from '@/components'
 import { Container } from '@/styles'
 
 function App() {
@@ -29,23 +23,20 @@ function App() {
     })()
   }, [])
 
-  return (
-    <>
-      <Header />
-      {featuredData && <FeaturedMovie movie={featuredData} />}
-      {movieList !== undefined && (
-        <>
-          <Container>
-            {movieList.map((list: MovieRow, key: Key) => {
-              return <MovieRowComponent key={key} list={list} />
-            })}
-          </Container>
-          {movieList.length <= 0 && <Loading />}
-        </>
-      )}
-      <Footer />
-    </>
-  )
+  if (movieList === undefined || movieList.length <= 0) {
+    return <Loading />
+  } else {
+    return (
+      <>
+        {featuredData && <FeaturedMovie movie={featuredData} />}
+        <Container>
+          {movieList.map((list: MovieRow, key: Key) => {
+            return <MovieRowComponent key={key} list={list} />
+          })}
+        </Container>
+      </>
+    )
+  }
 }
 
 export default App
