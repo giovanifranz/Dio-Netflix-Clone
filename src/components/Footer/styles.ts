@@ -8,6 +8,10 @@ export const Container = styled.footer`
     text-decoration: none;
     color: var(--white);
   }
+
+  a:hover {
+    opacity: 0.8;
+  }
 `
 
 export const Git = styled.img`
